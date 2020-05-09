@@ -1,0 +1,23 @@
+export interface Movie {
+    Title?:String,//
+    Year?:Number,//
+    Rated?:String,//
+    Released?:String,
+    RunTime?:String,
+    Genre?:String,
+    GenreArr?:Array<String>,
+    Director?:String,
+    Writer?:String,
+    WriterArr?:Array<String>,
+    Actors?:String,
+    ActorsArr?:Array<String>,
+    Plot?:String,//
+    Language?:String,
+    Country?:String,
+    Awards?:String,
+    Poster?:String,//
+    Ratings?:Array<Object>,
+    Type?:String,
+    Response:String,
+    Error?:String
+}

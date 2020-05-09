@@ -1,0 +1,28 @@
+<!-- <p>{{movieDetails | json}}</p> -->
+<div *ngIf="movieDetails!=undefined">
+    <div *ngIf="movieDetails.Response === 'True'">
+        <!-- <div *ngFor="let i of (movieDetails | keyvalue)">
+            <label>{{i.key}}</label>
+            <label>{{i.value}}</label>
+        </div> -->
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <img [src]="movieDetails.Poster">
+            </div>
+            <div class="col-12 col-sm-6 short-details">
+                <h2>{{movieDetails.Title+" ("+movieDetails.Year+")"}}</h2>
+                <p>{{movieDetails.Language}}</p>
+                <p>{{movieDetails.Rated +" "+ movieDetails.Type}}</p>
+                <p>{{"Plot: "+movieDetails.Plot}}</p>
+
+            </div>
+        </div>
+        
+        
+    </div>
+    <div *ngIf="movieDetails.Response === 'False'">
+        <div class="alert alert-danger" role="alert">
+            {{movieDetails.Error}}
+        </div>
+    </div>
+</div>

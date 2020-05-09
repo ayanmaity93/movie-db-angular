@@ -1,0 +1,13 @@
+<form>
+    <div class="row">
+        <div class="col-12 col-sm-9 col-md-10">
+            <mat-form-field class="full-width">
+                <mat-label>Movie Title</mat-label>
+                <input matInput required name="title" [(ngModel)]="filmTitle">
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-3 col-md-2">
+            <button mat-raised-button class="full-width" color="primary" (click)="search()">Search</button>
+        </div>
+    </div>
+</form>

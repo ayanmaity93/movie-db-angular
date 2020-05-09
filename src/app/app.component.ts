@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-db';
+  title = 'Movie Database';
+  searchTitle:String;
+
+  getDetails(e){
+    this.searchTitle=e;
+  }
 }
