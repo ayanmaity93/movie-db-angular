@@ -13,7 +13,7 @@ export class MoviedataService {
 
   getData (title): Observable<Movie> {
     let searchTitle = title.replace(' ','+');
-    return this.http.get<Movie>(`http://www.omdbapi.com/?t=${searchTitle}&apikey=cb88f6e1&plot=full`);
+    return this.http.get<Movie>(`https://www.omdbapi.com/?t=${searchTitle}&apikey=cb88f6e1&plot=full`);
   }
 
   transformData(data:String):Array<String>{
