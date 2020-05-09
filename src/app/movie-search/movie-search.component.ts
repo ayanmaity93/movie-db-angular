@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MovieSearchComponent implements OnInit {
   filmTitle:String;
+  advSearchText:String;
   @Output() titleSubmit = new EventEmitter();
   constructor() { }
 
@@ -14,8 +15,13 @@ export class MovieSearchComponent implements OnInit {
   }
   search(){
     if(this.filmTitle){
+      this.advSearchText="";
       this.titleSubmit.emit(this.filmTitle);
     }
+  }
+
+  advSearch(){
+    this.advSearchText="Advanced Search Feature Coming SOON..!!!"
   }
 
 }

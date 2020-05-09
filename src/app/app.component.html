@@ -1,13 +1,26 @@
+<div class="col-12 header-styles">
+  <h1 class="text-center">{{title}}</h1>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h1 class="text-center">{{title}}</h1>
-    </div>
-    <div class="col-12">
-      <app-movie-search (titleSubmit)="getDetails($event)"></app-movie-search>
-    </div>
-    <div class="col">
-      <app-movie-details [searchTitle]="searchTitle"></app-movie-details>
-    </div>
+    <!-- <div class="col-12"> -->
+    <mat-card class="col-12 card-gaps">  
+      <mat-card-content>
+        <h2>Search for your favourite title</h2>
+        <app-movie-search (titleSubmit)="getDetails($event)"></app-movie-search>
+      </mat-card-content>  
+    </mat-card>
+    <!-- </div> -->
+    <!-- <div class="col-12"> -->
+    
+      
+    
+    <!-- </div> -->
+    <!-- <div class="col"> -->
+    
+    <app-movie-details class="col-12 card gaps" [searchTitle]="searchTitle" style="background: transparent;" *ngIf="searchTitle"></app-movie-details>
+      
+    <!-- </div> -->
   </div>
 </div>
