@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./movie-search.component.scss']
 })
 export class MovieSearchComponent implements OnInit {
-  filmTitle:String;
-  advSearchText:String;
+  filmTitle:string;
+  advSearchText:string;
   @Output() titleSubmit = new EventEmitter();
   constructor() { }
 

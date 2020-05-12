@@ -1,22 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap, catchError } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
-import { Movie } from './movie'
+import { Observable } from 'rxjs';
+import { Movie } from './movie';
+import { AppConfigService } from './app-config.service';
+import { MovieList } from './movie-list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviedataService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, @Optional() private appConfig:AppConfigService) { }
 
-  getData (title): Observable<Movie> {
-    let searchTitle = title.replace(' ','+');
-    return this.http.get<Movie>(`https://www.omdbapi.com/?t=${searchTitle}&apikey=cb88f6e1&plot=full`);
+  getData (title,key): Observable<Movie> {
+    return this.http.get<Movie>(this.appConfig.queryGenerator(title,key));
   }
 
-  transformData(data:String):Array<String>{
+  getList (title): Observable<MovieList> {
+    return this.http.get<MovieList>(this.appConfig.queryGenerator(title,'list'));
+  }
+
+  transformData(data:string):Array<string>{
     return data?.split(',');
   }
 }

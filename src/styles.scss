@@ -3,7 +3,6 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/bootstrap/scss/mixins/breakpoints.scss';
 
-html, body {  }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
@@ -26,8 +25,34 @@ h1 {
     margin: 0;
 }
 
+.list-card{
+    margin: 10px 0;
+
+    .mat-card {
+        cursor: pointer;
+        &:hover {
+            border: 1px solid #007bff;
+        }
+    }
+
+    h4 {
+        height: 50px;
+        overflow: hidden;
+    }
+
+    .mat-card-image {
+        height: 300px;
+    }
+}
+
 @include media-breakpoint-down(xs) { 
     .short-details{
         margin-top: 20px;
+    }
+
+    .list-card{   
+        .mat-card-image {
+            height: auto;
+        }
     }
 }

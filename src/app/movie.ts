@@ -1,28 +1,28 @@
 export interface Movie {
-    Title?:String,
+    Title?:string,
     Year?:Number,
-    Rated?:String,
-    Released?:String,
-    Runtime?:String,
-    Genre?:String,
-    GenreArr?:Array<String>,
-    Director?:String,
-    Writer?:String,
-    WriterArr?:Array<String>,
-    Actors?:String,
-    ActorsArr?:Array<String>,
-    Plot?:String,
-    Language?:String,
-    Country?:String,
-    Awards?:String,
-    Poster?:String,
+    Rated?:string,
+    Released?:string,
+    Runtime?:string,
+    Genre?:string,
+    GenreArr?:Array<string>,
+    Director?:string,
+    Writer?:string,
+    WriterArr?:Array<string>,
+    Actors?:string,
+    ActorsArr?:Array<string>,
+    Plot?:string,
+    Language?:string,
+    Country?:string,
+    Awards?:string,
+    Poster?:string,
     Ratings?:Array<Rating>,
-    Type?:String,
-    Response:String,
-    Error?:String
+    Type?:string,
+    Response:string,
+    Error?:string
 }
 
 interface Rating {
-    Source:String,
-    Value:String
+    Source:string,
+    Value:string
 }

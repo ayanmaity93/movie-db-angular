@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Optional } from '@angular/core';
 import { MoviedataService } from '../moviedata.service';
 import { Movie } from '../movie';
-import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,21 +8,23 @@ import { map, filter } from 'rxjs/operators';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit, OnChanges {
-  @Input() searchTitle:String;
+  @Input() searchTitle:string;
+  @Input() searchType:string;
+  @Output() setList = new EventEmitter();
   movieDetails:Movie;
   spinner:Boolean;
 
-  constructor(private moviedataservice:MoviedataService) { }
+  constructor(@Optional() private moviedataservice:MoviedataService) { }
 
   ngOnChanges(changes){
     this.spinner=true;
     this.movieDetails=undefined;
-    this.getMovieData(changes.searchTitle.currentValue);
+    this.getMovieData();
   }
 
-  getMovieData(title){
+  getMovieData(){
     if(this.searchTitle){
-      this.moviedataservice.getData(title)
+      this.moviedataservice.getData(this.searchTitle,this.searchType)
       .pipe(
       )
       .subscribe(
