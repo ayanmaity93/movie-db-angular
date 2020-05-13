@@ -28,7 +28,16 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
       .pipe(
       )
       .subscribe(
-        next=> {this.movieDetails = next;console.log("Next="+next);this.transformData(); setTimeout(()=>{this.spinner=false;},1000)},
+        next=> {
+          this.movieDetails = next;
+          console.log("Next="+next);
+          this.transformData();
+          setTimeout(()=>{this.spinner=false;},1000)
+          if(this.movieDetails.Error == "Movie not found!") {
+            this.movieDetails = undefined;
+            this.setList.emit()
+          }
+        },
         error=> { this.movieDetails = {'Response':"False","Error":error.statusText}; }
       )
     }

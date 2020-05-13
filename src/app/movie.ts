@@ -18,6 +18,7 @@ export interface Movie {
     Poster?:string,
     Ratings?:Array<Rating>,
     Type?:string,
+    totalSeasons?:string,
     Response:string,
     Error?:string
 }

@@ -30,3 +30,15 @@
         <mat-progress-bar mode="indeterminate" class="center"></mat-progress-bar>
     </div>
 </div>
+<div class="row" *ngIf="paginationLength">
+    <div class="col-12">
+        <mat-divider></mat-divider>
+        <mat-paginator 
+            [length]="paginationLength"
+            [pageSize]="10"
+            [hidePageSize]="true"
+            [showFirstLastButtons]="true"
+            (page)="getPageList($event)">
+        </mat-paginator>
+    </div>
+</div>

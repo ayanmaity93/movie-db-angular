@@ -1,23 +1,38 @@
-<div class="col-12 header-styles">
-  <h1 class="text-center">{{title}}</h1>
-</div>
+<div [class.dark-theme]="isDarkTheme">
+  <div class="col-12 header-styles">
+    <div class="row">
+      <div class="col-6">
+        <h1 class="text-left">{{title}}</h1>
+      </div>
+      <div class="col-6 text-right">
+        <mat-slide-toggle
+          class="example-margin"
+          color="warn"
+          [checked]="isDarkTheme"
+          (change)="setTheme($event)">
+            Theme
+        </mat-slide-toggle>
+      </div>
+    </div>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <!-- <div class="col-12"> -->
-    <mat-card class="col-12 card-gaps">  
-      <mat-card-content>
-        <h2>Search for your favourite title</h2>
-        <app-movie-search (titleSubmit)="getDetails($event,'title')"></app-movie-search>
-      </mat-card-content>  
-    </mat-card>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-12"> -->
+      <mat-card class="col-12 card-gaps">  
+        <mat-card-content>
+          <h2>Search for your favourite title</h2>
+          <app-movie-search (titleSubmit)="getDetails($event,'title')"></app-movie-search>
+        </mat-card-content>  
+      </mat-card>
 
-    <app-movie-details class="col-12 card-gaps" [searchTitle]="searchTitle" [searchType]="searchType" style="background: transparent;" *ngIf="searchTitle && !isSearchList" (setList)="searchForList()"></app-movie-details>
+      <app-movie-details class="col-12 card-gaps" [searchTitle]="searchTitle" [searchType]="searchType" style="background: transparent;" *ngIf="searchTitle && !isSearchList" (setList)="searchForList()"></app-movie-details>
 
-    <mat-card class="col-12 card-gaps" *ngIf="searchTitle && isSearchList">  
-      <mat-card-content>
-        <app-search-list [searchTitle]="searchTitle" (onSearchSelect)="getDetails($event,'imdb')"></app-search-list>
-      </mat-card-content>  
-    </mat-card>
+      <mat-card class="col-12 card-gaps" *ngIf="searchTitle && isSearchList">  
+        <mat-card-content>
+          <app-search-list [searchTitle]="searchTitle" (onSearchSelect)="getDetails($event,'imdb')"></app-search-list>
+        </mat-card-content>  
+      </mat-card>
+    </div>
   </div>
 </div>

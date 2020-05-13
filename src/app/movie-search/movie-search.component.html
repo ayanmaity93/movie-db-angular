@@ -3,12 +3,12 @@
         <div class="col-12 col-sm-9 col-md-10">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
-                <input matInput required name="title" [(ngModel)]="filmTitle">
+                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off">
             </mat-form-field>
         </div>
-        <div class="col-12 col-sm-3 col-md-2">
+        <div class="col-12 col-sm-3 col-md-2 text-right">
             <button mat-raised-button class="full-width" color="primary" (click)="search()">Search</button>
-            <a href="javascript:void(0)" class="adv-search" (click)="advSearch()">Advanced Search</a>
+            <strong><a href="javascript:void(0)" class="adv-search" (click)="advSearch()">Advanced Search</a></strong>
         </div>
     </div>
     <p style="color: red;">{{advSearchText}}</p>

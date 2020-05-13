@@ -16,8 +16,8 @@ export class MoviedataService {
     return this.http.get<Movie>(this.appConfig.queryGenerator(title,key));
   }
 
-  getList (title): Observable<MovieList> {
-    return this.http.get<MovieList>(this.appConfig.queryGenerator(title,'list'));
+  getList (title,type?,year?,pageNo?): Observable<MovieList> {
+    return this.http.get<MovieList>(this.appConfig.queryGenerator(title,'list',type,year,pageNo));
   }
 
   transformData(data:string):Array<string>{

@@ -13,6 +13,7 @@ export class SearchListComponent implements OnInit, OnChanges {
   @Output() onSearchSelect = new EventEmitter();
   spinner:Boolean;
   movieList: MovieList;
+  paginationLength:number;
 
   constructor(@Optional() private moviedataService:MoviedataService) { }
 
@@ -31,10 +32,27 @@ export class SearchListComponent implements OnInit, OnChanges {
       .pipe(
       )
       .subscribe(
-        next=> {this.movieList = next;console.log("Next="+next);setTimeout(()=>{this.spinner=false;},1000)},
+        next=> {this.movieList = next;setTimeout(()=>{this.setPaginator();this.spinner=false;},1000)},
         error=> { this.movieList = {'Response':"False","Error":error.statusText}; }
       )
     }
+  }
+
+  setPaginator(){
+    // this.paginationLength = (this.movieList.totalResults && parseInt(this.movieList.totalResults)%10!==0)? (parseInt(this.movieList.totalResults)/10)+1:(parseInt(this.movieList.totalResults)/10);
+    this.paginationLength = (this.movieList.totalResults)? (parseInt(this.movieList.totalResults)):undefined;
+  }
+
+  getPageList(e) {
+    this.spinner = true;
+    this.movieList = undefined;
+    this.moviedataService.getList(this.title,'','',e.pageIndex+1)
+    .pipe(
+    )
+    .subscribe(
+      next=> {this.movieList = next;setTimeout(()=>{this.spinner=false;},1000)},
+      error=> { this.movieList = {'Response':"False","Error":error.statusText}; }
+    )
   }
 
 }
