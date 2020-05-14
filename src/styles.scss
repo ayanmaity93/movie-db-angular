@@ -26,6 +26,15 @@ body {
 .card-gaps {
     margin: 10px 2px;
 }
+
+.marginTop-10 {
+    margin-top: 10px;
+}
+
+a {
+    cursor: pointer;
+}
+
 h1 {
     font-size: 36px;
 }
@@ -73,6 +82,14 @@ h1 {
     }
 }
 
+.icon-color {
+    color: #3f51b5;
+}
+
+.icon-danger-color {
+    color: red;
+}
+
 @include media-breakpoint-down(xs) { 
     .short-details{
         margin-top: 20px;
@@ -106,6 +123,10 @@ h1 {
         h4 {
             border-color: #fff;
         }
+    }
+
+    .icon-color {
+        color: #009688;
     }
 }
 

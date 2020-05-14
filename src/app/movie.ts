@@ -19,6 +19,7 @@ export interface Movie {
     Ratings?:Array<Rating>,
     Type?:string,
     totalSeasons?:string,
+    imdbID?:string,
     Response:string,
     Error?:string
 }

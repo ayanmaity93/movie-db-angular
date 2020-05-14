@@ -10,7 +10,7 @@ export class AppConfigService {
 
   constructor() { }
 
-  queryGenerator(title:string,searchType:string,type?:string,year?:string,pageNo?:string):string {
+  queryGenerator(title:string,searchType:string,type?:string,year?:string,pageNo?:string,seasonNo?:string,episodeNo?:string):string {
     let query:string= this.baseUrl + "?apikey=" + this.apiKey+"&plot=full";
     if(searchType=='title'){
       query = query+"&t="+title.replace(' ','+');
@@ -27,6 +27,12 @@ export class AppConfigService {
     }
     if(pageNo){
       query = query+"&page="+pageNo;
+    }
+    if(seasonNo){
+      query = query+"&Season="+seasonNo;
+    }
+    if(episodeNo){
+      query = query+"&Episode="+episodeNo;
     }
     return query;
   }

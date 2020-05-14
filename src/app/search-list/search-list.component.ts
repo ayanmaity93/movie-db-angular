@@ -27,8 +27,8 @@ export class SearchListComponent implements OnInit, OnChanges {
   }
 
   getList(){
-    if(this.title){
-      this.moviedataService.getList(this.title)
+    if(this.moviedataService.title){
+      this.moviedataService.getList(this.moviedataService.title)
       .pipe(
       )
       .subscribe(
@@ -46,12 +46,12 @@ export class SearchListComponent implements OnInit, OnChanges {
   getPageList(e) {
     this.spinner = true;
     this.movieList = undefined;
-    this.moviedataService.getList(this.title,'','',e.pageIndex+1)
+    this.moviedataService.getList(this.moviedataService.title,'','',e.pageIndex+1)
     .pipe(
     )
     .subscribe(
       next=> {this.movieList = next;setTimeout(()=>{this.spinner=false;},1000)},
-      error=> { this.movieList = {'Response':"False","Error":error.statusText}; }
+      error=> { this.movieList = {'Response':"False","Error":error.statusText}; setTimeout(()=>{this.setPaginator();this.spinner=false;},1000)}
     )
   }
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
+import { MoviedataService } from './moviedata.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +11,35 @@ export class AppComponent implements OnInit {
   title = 'MOVIE DB';
   searchTitle:string;
   searchFormText:string;
-  searchType:string = "form";
   isSearchList:boolean = false;
   isDarkTheme:boolean = false;
+  showDetails:boolean = true;
 
   body:HTMLElement = document.getElementById("main-body");
 
+  constructor(@Optional() private moviedataSevice: MoviedataService, private router:Router){}
+
   getDetails(e,type){
+    this.showDetails = true;
     if(type==='imdb'){
-      this.searchFormText = this.searchTitle;
+      //this.searchFormText = this.moviedataSevice.title;
+      this.moviedataSevice.imdb=e;
     } else {
-      this.searchFormText = e;
+      //this.searchFormText = e;
+      this.moviedataSevice.title=e;
     }
-    this.searchTitle=e;
-    this.searchType=type;
+    //this.moviedataSevice.title=e;
+    this.moviedataSevice.key=type;
+    this.searchTitle = e;
     this.isSearchList = false;
+    if(this.router.url !== '/'){
+      this.router.navigateByUrl('/');
+    }
   }
 
   searchForList(){
-    this.searchTitle = this.searchFormText;
+    //this.moviedataSevice.title = this.searchFormText;
+    //this.searchTitle = this.searchFormText;
     this.isSearchList = true;
   }
 
@@ -46,5 +58,11 @@ export class AppComponent implements OnInit {
       this.body.classList.remove('dark-body');
       this.body.classList.add('light-body');
     }
+  }
+
+  loadSeasons(e){
+    this.showDetails = false;
+    this.moviedataSevice.imdb = e;
+    this.router.navigateByUrl('/seasons');
   }
 }

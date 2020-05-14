@@ -26,13 +26,21 @@
         </mat-card-content>  
       </mat-card>
 
-      <app-movie-details class="col-12 card-gaps" [searchTitle]="searchTitle" [searchType]="searchType" style="background: transparent;" *ngIf="searchTitle && !isSearchList" (setList)="searchForList()"></app-movie-details>
+      <div class="col-12 card-gaps" *ngIf="showDetails">
+        <app-movie-details class="" [searchTitle]="searchTitle" *ngIf="searchTitle && !isSearchList" (setList)="searchForList()" (showSeasons)="loadSeasons($event)"></app-movie-details>
 
-      <mat-card class="col-12 card-gaps" *ngIf="searchTitle && isSearchList">  
-        <mat-card-content>
-          <app-search-list [searchTitle]="searchTitle" (onSearchSelect)="getDetails($event,'imdb')"></app-search-list>
-        </mat-card-content>  
-      </mat-card>
+        <mat-card class="row" *ngIf="searchTitle && isSearchList">  
+          <mat-card-content>
+            <app-search-list [searchTitle]="searchTitle" (onSearchSelect)="getDetails($event,'imdb')"></app-search-list>
+          </mat-card-content>  
+        </mat-card>
+      </div>
+
+
+      <div class="col-12 card-gaps">
+        <router-outlet></router-outlet>
+      </div>
+        
     </div>
   </div>
 </div>
