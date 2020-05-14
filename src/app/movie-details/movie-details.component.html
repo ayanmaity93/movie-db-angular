@@ -4,6 +4,9 @@
             <mat-card class="col-12">
                 <mat-card-content>
                     <div class="row">
+                        <div class="col-12" *ngIf="key === 'episode'">
+                            <h4><i class="material-icons icon-color" style="font-size: 15px;">keyboard_arrow_left</i><a href="javascript:void(0);" (click)="location.back()"><strong>Go Back</strong></a></h4>
+                        </div>
                         <div class="col-12 col-sm-4">
                             <img [src]="movieDetails.Poster" class="full-width" *ngIf="movieDetails.Poster !=='N/A'">
                             <img src="https://www.mediaonmars.com.au/wp-content/uploads/2010/08/movie_poster_rant-310x310.png" class="full-width" *ngIf="movieDetails.Poster ==='N/A'"/>

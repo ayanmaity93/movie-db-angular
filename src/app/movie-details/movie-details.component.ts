@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Optional } from '@angular/core';
+import { Location } from '@angular/common';
 import { MoviedataService } from '../moviedata.service';
 import { Movie } from '../movie';
 
@@ -19,7 +20,7 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
   episode:string;
   season:string;
 
-  constructor(@Optional() private moviedataservice:MoviedataService) { }
+  constructor(@Optional() private moviedataservice:MoviedataService, public location:Location) { }
 
   ngOnChanges(){
     this.spinner=true;
