@@ -28,7 +28,7 @@ export class SearchListComponent implements OnInit, OnChanges {
 
   getList(){
     if(this.moviedataService.title){
-      this.moviedataService.getList(this.moviedataService.title)
+      this.moviedataService.getList(this.moviedataService.title,this.moviedataService.type,this.moviedataService.year)
       .pipe(
       )
       .subscribe(
@@ -46,7 +46,7 @@ export class SearchListComponent implements OnInit, OnChanges {
   getPageList(e) {
     this.spinner = true;
     this.movieList = undefined;
-    this.moviedataService.getList(this.moviedataService.title,'','',e.pageIndex+1)
+    this.moviedataService.getList(this.moviedataService.title,this.moviedataService.type,this.moviedataService.year,e.pageIndex+1)
     .pipe(
     )
     .subscribe(

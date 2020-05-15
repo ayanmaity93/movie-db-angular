@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {MatInputModule} from '@angular/material/input';
@@ -40,6 +40,7 @@ import { EpisodeDetailsComponent } from './episode-details/episode-details.compo
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path:'seasons', component:SeasonDetailsComponent},
       {path:'episodes', component:EpisodeDetailsComponent}

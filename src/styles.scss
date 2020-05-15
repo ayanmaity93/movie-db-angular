@@ -91,6 +91,7 @@ h1 {
 }
 
 @include media-breakpoint-down(xs) { 
+
     .short-details{
         margin-top: 20px;
     }
@@ -99,6 +100,11 @@ h1 {
         .mat-card-image {
             height: auto;
         }
+    }
+}
+@include media-breakpoint-down(sm) { 
+    .movie-form-field {
+        margin-bottom: 20px;
     }
 }
 @include media-breakpoint-up(lg) { 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-search',
@@ -7,21 +8,35 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MovieSearchComponent implements OnInit {
   filmTitle:string;
-  advSearchText:string;
+  isAdvSearch:boolean = false;
+  searchType = [{
+    "value":"All",
+    "key":""
+  }, {
+    "value":"Film",
+    "key":"movie"
+  }, {
+    "value":"TV",
+    "key":"series"
+  }]
   @Output() titleSubmit = new EventEmitter();
-  constructor() { }
+  constructor(public fb:FormBuilder) { }
+
+  searchTitle = this.fb.group({
+    type: [''],
+    title: ['',Validators.required],
+    year: ['',Validators.max(3000)]
+  })
 
   ngOnInit(): void {
+    this.searchTitle.get('type').setValue(this.searchType[0].key);
   }
-  search(){
-    if(this.filmTitle){
-      this.advSearchText="";
-      this.titleSubmit.emit(this.filmTitle);
-    }
+  search(values){
+    this.titleSubmit.emit(values);
   }
 
   advSearch(){
-    this.advSearchText="Advanced Search Feature Coming SOON..!!!"
+    this.isAdvSearch = !this.isAdvSearch;
   }
 
 }

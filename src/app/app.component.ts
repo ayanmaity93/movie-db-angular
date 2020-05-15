@@ -24,13 +24,16 @@ export class AppComponent implements OnInit {
     if(type==='imdb'){
       //this.searchFormText = this.moviedataSevice.title;
       this.moviedataSevice.imdb=e;
+      this.searchTitle = e;
     } else {
       //this.searchFormText = e;
-      this.moviedataSevice.title=e;
+      this.moviedataSevice.title=e.title;
+      this.moviedataSevice.year=e.year;
+      this.moviedataSevice.type=e.type;
+      this.searchTitle = e.title;
     }
     //this.moviedataSevice.title=e;
     this.moviedataSevice.key=type;
-    this.searchTitle = e;
     this.isSearchList = false;
     if(this.router.url !== '/'){
       this.router.navigateByUrl('/');

@@ -86,8 +86,12 @@ export class MoviedataService {
 
   constructor(private http:HttpClient, @Optional() private appConfig:AppConfigService) { }
 
-  getData (title,key): Observable<Movie> {
-    return this.http.get<Movie>(this.appConfig.queryGenerator(title,key));
+  getData (title,key,type,year): Observable<Movie> {
+    if(key=='imdb'){
+      return this.http.get<Movie>(this.appConfig.queryGenerator(title,key));
+    } else {
+      return this.http.get<Movie>(this.appConfig.queryGenerator(title,key,type,year));
+    }
   }
 
   getList (title,type?,year?,pageNo?): Observable<MovieList> {

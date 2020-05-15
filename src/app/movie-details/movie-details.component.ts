@@ -35,7 +35,7 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
   getMovieData(){
     if(this.moviedataservice.key !== "episode"){
       this.title = (this.moviedataservice.key=='imdb')? this.moviedataservice.imdb : this.moviedataservice.title;
-      this.moviedataservice.getData(this.title,this.moviedataservice.key)
+      this.moviedataservice.getData(this.title,this.moviedataservice.key,this.moviedataservice.type,this.moviedataservice.year)
       .pipe(
       )
       .subscribe(
