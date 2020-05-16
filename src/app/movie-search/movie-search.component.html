@@ -1,13 +1,14 @@
-<form *ngIf="!isAdvSearch">
+<form *ngIf="!isAdvSearch" #simpleForm="ngForm" (ngSubmit)="search({'title':filmTitle})" >
     <div class="row">
         <div class="col-12 col-sm-9 col-md-10">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
-                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off">
+                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off" #simpleFormTitle="ngModel">
+                <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched">Please enter the title</mat-error>
             </mat-form-field>
         </div>
         <div class="col-12 col-sm-3 col-md-2 text-center">
-            <button mat-raised-button class="full-width" color="primary" (click)="search({'title':filmTitle})">Search</button>
+            <button type="submit" mat-raised-button class="full-width" color="primary" [disabled]="simpleForm.form.invalid">Search</button>
             <strong><a href="javascript:void(0)" class="adv-search" (click)="advSearch()">Advanced Search</a></strong>
         </div>
     </div>
