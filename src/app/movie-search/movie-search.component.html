@@ -1,10 +1,11 @@
 <form *ngIf="!isAdvSearch" #simpleForm="ngForm" (ngSubmit)="search({'title':filmTitle})" >
     <div class="row">
-        <div class="col-12 col-sm-9 col-md-10">
+        <div class="col-12 col-sm-9 col-md-10 movie-form-field">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
-                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off" #simpleFormTitle="ngModel">
-                <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched">Please enter the title</mat-error>
+                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off" #simpleFormTitle="ngModel" minlength="2">
+                <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched && simpleFormTitle.errors?.required">Please enter the title</mat-error>
+                <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched && simpleFormTitle.errors?.minlength">Enter atleast 2 characters</mat-error>
             </mat-form-field>
         </div>
         <div class="col-12 col-sm-3 col-md-2 text-center">
@@ -31,13 +32,15 @@
                 <mat-label>Title</mat-label>
                 <input type="text" matInput required autocomplete="off" formControlName="title">
                 <mat-error *ngIf="searchTitle.get('title').hasError('required')">Please enter the title</mat-error>
+                <mat-error *ngIf="searchTitle.get('title').hasError('minlength')">Enter atleast 2 characters</mat-error>
             </mat-form-field>
         </div>
         <div class="col-12 col-sm-4 col-md-3 movie-form-field">
             <mat-form-field class="full-width">
                 <mat-label>Year</mat-label>
-                <input type="number" matInput autocomplete="off" formControlName="year">
-                <mat-error *ngIf="searchTitle.get('year').hasError('max')">Maximum Year can be 3000</mat-error>
+                <input type="tel" matInput autocomplete="off" formControlName="year">
+                <mat-error *ngIf="searchTitle.get('year').hasError('regExError')">Only numbers are accepted</mat-error>
+                <mat-error *ngIf="searchTitle.get('year').hasError('max') && !searchTitle.get('year').hasError('regExError')">Maximum Year can be 3000</mat-error>
             </mat-form-field>
         </div>
         <div class="col-12 col-sm-6 offset-sm-3 col-md-2 offset-md-0 text-center">

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegExCustomValidator } from '../validators';
 
 @Component({
   selector: 'app-movie-search',
@@ -24,8 +25,8 @@ export class MovieSearchComponent implements OnInit {
 
   searchTitle = this.fb.group({
     type: [''],
-    title: ['',Validators.required],
-    year: ['',Validators.max(3000)]
+    title: ['',[Validators.required,Validators.minLength(2)]],
+    year: ['',[RegExCustomValidator(/^[0-9]*$/), Validators.max(3000)]]
   })
 
   ngOnInit(): void {
