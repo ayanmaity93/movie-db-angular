@@ -5,7 +5,7 @@ export interface MovieList {
     Error?:string
 }
 
-interface MovieItem {
+export interface MovieItem {
     Title:string,
     Year:string,
     imdbID:string,

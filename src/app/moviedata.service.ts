@@ -1,9 +1,10 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Movie } from './movie';
 import { AppConfigService } from './app-config.service';
-import { MovieList } from './movie-list';
+import { MovieList, MovieItem } from './movie-list';
 import { SeasonList } from './season-list';
 
 @Injectable({
@@ -96,6 +97,10 @@ export class MoviedataService {
 
   getList (title,type?,year?,pageNo?): Observable<MovieList> {
     return this.http.get<MovieList>(this.appConfig.queryGenerator(title,'list',type,year,pageNo));
+  }
+
+  getListForSuggestion (title): Observable<MovieItem[]> {
+    return this.http.get<MovieList>(this.appConfig.queryGenerator(title,'list')).pipe(map(result=>result.Search));
   }
 
   getSeason (id,seasonNo): Observable<SeasonList> {

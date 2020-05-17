@@ -3,7 +3,7 @@
         <div class="col-12 col-sm-9 col-md-10 movie-form-field">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
-                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off" #simpleFormTitle="ngModel" minlength="2">
+                <input matInput required name="title" [(ngModel)]="filmTitle" autocomplete="off" #simpleFormTitle="ngModel" minlength="2" (input)="autoSuggest(simpleFormTitle.valid,filmTitle)">
                 <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched && simpleFormTitle.errors?.required">Please enter the title</mat-error>
                 <mat-error *ngIf="simpleFormTitle.invalid && simpleFormTitle.touched && simpleFormTitle.errors?.minlength">Enter atleast 2 characters</mat-error>
             </mat-form-field>
@@ -30,7 +30,7 @@
         <div class="col-12 col-sm-6 col-md-5 movie-form-field">
             <mat-form-field class="full-width">
                 <mat-label>Title</mat-label>
-                <input type="text" matInput required autocomplete="off" formControlName="title">
+                <input type="text" matInput required autocomplete="off" formControlName="title" (input)="autoSuggest(searchTitle.get('title').valid,searchTitle.get('title').value)">
                 <mat-error *ngIf="searchTitle.get('title').hasError('required')">Please enter the title</mat-error>
                 <mat-error *ngIf="searchTitle.get('title').hasError('minlength')">Enter atleast 2 characters</mat-error>
             </mat-form-field>
@@ -49,3 +49,10 @@
         </div>
     </div>
 </form>
+
+<div class="marginTop-10">
+    <h3 *ngIf="autoSuggestion$ | async"><strong>Suggestions</strong></h3>
+    <mat-chip-list aria-label="Titles" class="marginTop-10" style="display: block;">
+        <mat-chip color="primary" class="text-truncate" selected *ngFor="let title of autoSuggestion$ | async" (click)="search({'title':title.Title})">{{title.Title}}</mat-chip>
+    </mat-chip-list>
+</div>
