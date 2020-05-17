@@ -19,7 +19,7 @@
                             <p><strong>Rating: </strong>{{ movieDetails.Ratings[0]?.Value }}</p>
                             <p>{{movieDetails.Language}}</p>
                             <p>{{movieDetails.Rated +" "+ movieDetails.Type}}</p>
-                            <p *ngIf="movieDetails.totalSeasons">Total Seasons: <a href="javascript:void(0);" (click)="loadSeasons()">{{movieDetails.totalSeasons}} Seasons</a></p>
+                            <p *ngIf="movieDetails.totalSeasons && movieDetails.totalSeasons!=='N/A'">Total Seasons: <a href="javascript:void(0);" (click)="loadSeasons()">{{movieDetails.totalSeasons}} Seasons</a></p>
                             <h4><strong>Plot</strong></h4>
                             <p>{{movieDetails.Plot}}</p>
                         </div>
