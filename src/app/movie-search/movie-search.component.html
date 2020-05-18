@@ -50,9 +50,9 @@
     </div>
 </form>
 
-<div class="marginTop-10">
-    <h3 *ngIf="autoSuggestion$ | async"><strong>Suggestions</strong></h3>
+<div class="marginTop-10" *ngIf="{'suggestions':(autoSuggestion$ | async)} as suggested">
+    <h3 *ngIf="suggested.suggestions" ><strong>Suggestions</strong></h3>
     <mat-chip-list aria-label="Titles" class="marginTop-10" style="display: block;">
-        <mat-chip color="primary" class="text-truncate" selected *ngFor="let title of autoSuggestion$ | async" (click)="search({'title':title.Title})">{{title.Title}}</mat-chip>
+        <mat-chip color="primary" class="text-truncate" selected *ngFor="let title of suggested.suggestions" (click)="search({'title':title.Title})">{{title.Title}}</mat-chip>
     </mat-chip-list>
 </div>
