@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'MOVIE DB';
   searchTitle:string;
+  searchYear:number;
+  searchType:string;
   searchFormText:string;
   isSearchList:boolean = false;
   isDarkTheme:boolean = false;
@@ -31,6 +33,8 @@ export class AppComponent implements OnInit {
       this.moviedataSevice.year=e.year;
       this.moviedataSevice.type=e.type;
       this.searchTitle = e.title;
+      this.searchYear = e.year;
+      this.searchType = e.type;
     }
     //this.moviedataSevice.title=e;
     this.moviedataSevice.key=type;

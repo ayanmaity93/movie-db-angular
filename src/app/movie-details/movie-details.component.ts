@@ -10,6 +10,8 @@ import { Movie } from '../movie';
 })
 export class MovieDetailsComponent implements OnInit, OnChanges {
   @Input() searchTitle:string;
+  @Input() year:string;
+  @Input() type:string;
   @Output() setList = new EventEmitter();
   @Output() showSeasons = new EventEmitter();
   title:string;
