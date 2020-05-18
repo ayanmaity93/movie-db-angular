@@ -27,7 +27,8 @@
                     </div>
                     <div *ngIf="!item.Spinner && item.SeasonObject?.Response == 'False'"> 
                         <div class="alert alert-danger" role="alert">
-                            <i class="material-icons icon-danger-color">error</i> {{item.SeasonObject?.Error}}
+                            <i class="material-icons icon-danger-color icon-position">error</i>
+                            <span class="icon-text"> {{item.SeasonObject?.Error}} </span>
                         </div>
                     </div>
                     <div *ngIf="item.Spinner">

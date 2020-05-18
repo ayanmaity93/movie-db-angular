@@ -89,6 +89,15 @@ h1 {
 .icon-danger-color {
     color: red;
 }
+.icon-position {
+    position: absolute;
+    bottom: 10px;
+}
+
+.icon-text {
+    display: inline-block;
+    margin-left: 30px;
+}
 
 @include media-breakpoint-down(xs) { 
 

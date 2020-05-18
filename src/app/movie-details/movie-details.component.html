@@ -5,7 +5,8 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-12" *ngIf="key === 'episode'">
-                            <h4><i class="material-icons icon-color" style="font-size: 15px;">keyboard_arrow_left</i><a href="javascript:void(0);" (click)="location.back()"><strong>Go Back</strong></a></h4>
+                            <h4><i class="material-icons icon-color icon-position" style="bottom: 16px;">keyboard_arrow_left</i>
+                                <a class="icon-text" href="javascript:void(0);" (click)="location.back()" style="margin-left: 20px;"><strong>Go Back</strong></a></h4>
                         </div>
                         <div class="col-12 col-sm-4">
                             <img [src]="movieDetails.Poster" class="full-width" *ngIf="movieDetails.Poster !=='N/A'">
@@ -40,7 +41,8 @@
         <mat-card class="col-12">
             <mat-card-content>
                 <div class="alert alert-danger" role="alert">
-                    <i class="material-icons icon-danger-color">error</i> {{movieDetails.Error}}
+                    <i class="material-icons icon-danger-color icon-position">error</i> 
+                    <span class="icon-text"> {{movieDetails.Error}} </span>
                 </div>
             </mat-card-content>
         </mat-card>
