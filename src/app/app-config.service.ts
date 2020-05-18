@@ -13,11 +13,11 @@ export class AppConfigService {
   queryGenerator(title:string,searchType:string,type?:string,year?:string,pageNo?:string,seasonNo?:string,episodeNo?:string):string {
     let query:string= this.baseUrl + "?apikey=" + this.apiKey+"&plot=full";
     if(searchType=='title'){
-      query = query+"&t="+title.replace(' ','+');
+      query = query+"&t="+title.replace(/ /g,'+');
     } else if(searchType=='imdb') {
-      query = query+"&i="+title.replace(' ','+');
+      query = query+"&i="+title.replace(/ /g,'+');
     } else {
-      query = query+"&s="+title.replace(' ','+');
+      query = query+"&s="+title.replace(/ /g,'+');
     }
     if(type){
       query = query+"&type="+type;

@@ -53,7 +53,7 @@ export class MovieSearchComponent implements OnInit {
 
   autoSuggest(isValid,key){
     if(isValid){
-      this.keyword.next(key);
+      this.keyword.next(key.trim());
     }
   }
 
