@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Optional } f
 import { Location } from '@angular/common';
 import { MoviedataService } from '../moviedata.service';
 import { Movie } from '../movie';
+import { NgNavigatorShareService } from 'ng-navigator-share';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-details',
@@ -21,8 +23,9 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
   fullTitle:string;
   episode:string;
   season:string;
+  isSharePossible:boolean = false;
 
-  constructor(@Optional() private moviedataservice:MoviedataService, public location:Location) { }
+  constructor(@Optional() private moviedataservice:MoviedataService, public location:Location, private shareService: NgNavigatorShareService, private snackBar:MatSnackBar) { }
 
   ngOnChanges(){
     this.spinner=true;
@@ -78,6 +81,7 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.isSharePossible = this.shareService.canShare();
   }
 
   transformData(){
@@ -90,6 +94,19 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
     this.moviedataservice.totalSeasons = parseInt(this.movieDetails.totalSeasons); 
     this.moviedataservice.fullTitle = this.movieDetails.Title;
     this.showSeasons.emit(this.movieDetails.imdbID);
+  }
+
+  share(){
+    this.shareService.share({
+      title: this.moviedataservice.title,
+      text: `${this.movieDetails.Title}(${this.movieDetails.Year}) ${this.movieDetails.Genre} ${this.movieDetails.Type}. ${this.movieDetails.Ratings[0].Value}. Starring ${this.movieDetails.Actors}. Directed by ${this.movieDetails.Director}. Plot: ${this.movieDetails.Plot} ${this.movieDetails.Awards} Information retrieved from Movie DB by Ayan Maity.`,
+      url:""
+    }).then( (response) => {
+      this.snackBar.open("Shared Successfully.",'',{duration:2000});
+    })
+    .catch( (error) => {
+      this.snackBar.open("Something wen't wrong. Try Again.",'',{duration:2000});
+    });
   }
 
 }

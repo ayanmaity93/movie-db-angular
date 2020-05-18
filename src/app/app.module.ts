@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,7 +58,8 @@ import { EpisodeDetailsComponent } from './episode-details/episode-details.compo
     MatPaginatorModule,
     MatSlideToggleModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

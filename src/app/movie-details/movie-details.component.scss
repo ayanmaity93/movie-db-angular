@@ -1,0 +1,8 @@
+.share-block {
+    color: #3f51b5;
+    margin: 15px 0;
+}
+
+:host-context(.dark-theme) .share-block {
+    color: #009688;
+}

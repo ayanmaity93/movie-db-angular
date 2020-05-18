@@ -12,10 +12,10 @@
                             <img [src]="movieDetails.Poster" class="full-width" *ngIf="movieDetails.Poster !=='N/A'">
                             <img src="https://www.mediaonmars.com.au/wp-content/uploads/2010/08/movie_poster_rant-310x310.png" class="full-width" *ngIf="movieDetails.Poster ==='N/A'"/>
                         </div>
-                        <div class="col-12 col-sm-6 short-details">
+                        <div class="col-12 col-sm-8 short-details">
                             <h2> 
                                 <span *ngIf="key === 'episode'"> {{fullTitle+" S"+season+"E"+episode+" : "}} </span>
-                                {{movieDetails.Title+" ("+movieDetails.Year+")"}}
+                                <span>{{movieDetails.Title+" ("+movieDetails.Year+")"}} </span> 
                             </h2>
                             <p><strong>Rating: </strong>{{ movieDetails.Ratings[0]?.Value }}</p>
                             <p>{{movieDetails.Language}}</p>
@@ -24,8 +24,16 @@
                             <h4><strong>Plot</strong></h4>
                             <p>{{movieDetails.Plot}}</p>
                         </div>
-                        <div class="col-12 search-list-link text-right" *ngIf="key !== 'episode'">
-                            <a href="javascript:void(0);" (click)="setList.emit()">Not what you're looking for ? <strong>See More Results</strong></a>
+                        <div class="col-12 text-right" *ngIf="key !== 'episode'">
+                            <div class='share-block' *ngIf="isSharePossible">
+                                <a (click)="share()">
+                                    <span class="material-icons icon-position" style="bottom: auto; top: 11px;">share</span>
+                                    <span class="icon-text"><strong>SHARE</strong></span>
+                                </a>
+                            </div>
+                            <div class="search-list-link">
+                                <a href="javascript:void(0);" (click)="setList.emit()">Not what you're looking for ? <strong>See More Results</strong></a>
+                            </div>
                         </div>
                     </div>
                 </mat-card-content>
