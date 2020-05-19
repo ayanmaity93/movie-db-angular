@@ -1,4 +1,4 @@
-<div *ngIf="movieList!=undefined && !spinner">
+<div *ngIf="movieList!=undefined">
     <div *ngIf="movieList.Response === 'True'">
         <div class="row">
             <!-- {{movieList | json}} -->
@@ -31,7 +31,7 @@
         <mat-progress-bar mode="indeterminate" class="center"></mat-progress-bar>
     </div>
 </div>
-<div class="row" *ngIf="paginationLength">
+<!-- <div class="row" *ngIf="paginationLength">
     <div class="col-12">
         <mat-divider></mat-divider>
         <mat-paginator 
@@ -42,4 +42,4 @@
             (page)="getPageList($event)">
         </mat-paginator>
     </div>
-</div>
+</div> -->
