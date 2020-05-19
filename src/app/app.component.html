@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       <!-- <div class="col-12"> -->
-      <mat-card class="col-12 card-gaps">  
+      <mat-card class="col-12 card-gaps" id="search">  
         <mat-card-content>
           <h2>Search for your favourite title</h2>
           <app-movie-search (titleSubmit)="getDetails($event,'title')"></app-movie-search>
@@ -44,3 +44,15 @@
     </div>
   </div>
 </div>
+
+<button mat-fab color="accent" class="options-button" aria-label="Options Button" *ngIf="showOption" (click)="showOptions = !showOptions">
+  <mat-icon>settings</mat-icon>
+</button>
+
+<button mat-mini-fab color="primary" class="options-button" style="bottom: 93px; right: 35px;" aria-label="Options Button" *ngIf="showOption && showOptions" (click)="goToSearch()">
+  <mat-icon>search</mat-icon>
+</button>
+
+<button mat-mini-fab color="primary" class="options-button" style="bottom: 140px; right: 35px;" aria-label="Options Button" *ngIf="showOption && showOptions" (click)="isDarkTheme = !isDarkTheme; setTheme()">
+  <mat-icon>palette</mat-icon>
+</button>

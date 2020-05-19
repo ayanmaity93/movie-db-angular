@@ -17,6 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,7 +60,8 @@ import { EpisodeDetailsComponent } from './episode-details/episode-details.compo
     MatSlideToggleModule,
     MatListModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

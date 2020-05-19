@@ -1,4 +1,4 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, Optional, HostListener } from '@angular/core';
 import { MoviedataService } from './moviedata.service';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,16 @@ export class AppComponent implements OnInit {
   isSearchList:boolean = false;
   isDarkTheme:boolean = false;
   showDetails:boolean = true;
+  showOption:boolean = false;
+  showOptions:boolean = false;
+  @HostListener('window:scroll') onScroll(){
+    if(window.scrollY > 200){
+      this.showOption = true;
+    } else {
+      this.showOption = false;
+      this.showOptions = false;
+    }
+  }
 
   body:HTMLElement = document.getElementById("main-body");
 
@@ -54,7 +64,7 @@ export class AppComponent implements OnInit {
     this.setTheme('');
   }
 
-  setTheme(e){
+  setTheme(e?){
     if(e){
       this.isDarkTheme = e.checked;
     }
@@ -72,4 +82,10 @@ export class AppComponent implements OnInit {
     this.moviedataSevice.imdb = e;
     this.router.navigateByUrl('/seasons');
   }
+
+  goToSearch(){
+    let search = document.getElementById('search');
+    search.scrollIntoView();
+  }
+
 }
