@@ -48,7 +48,7 @@ export class SearchListComponent implements OnInit, OnChanges {
   }
 
   setPaginator(){
-    this.paginationLength = (this.movieList.totalResults && parseInt(this.movieList.totalResults)%10!==0)? (parseInt(this.movieList.totalResults)/10)+1:(parseInt(this.movieList.totalResults)/10);
+    this.paginationLength = (this.movieList.totalResults && parseInt(this.movieList.totalResults)%10!==0)? (parseInt((parseInt(this.movieList.totalResults)/10).toString()))+1:(parseInt((parseInt(this.movieList.totalResults)/10).toString()));
   }
 
   getPageList(pageNo) {

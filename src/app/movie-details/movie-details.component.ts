@@ -99,7 +99,7 @@ export class MovieDetailsComponent implements OnInit, OnChanges {
   share(){
     this.shareService.share({
       title: this.moviedataservice.title,
-      text: `${this.movieDetails.Title}(${this.movieDetails.Year}) ${this.movieDetails.Genre} ${this.movieDetails.Type}. ${this.movieDetails.Ratings[0].Value}. Starring ${this.movieDetails.Actors}. Directed by ${this.movieDetails.Director}. Plot: ${this.movieDetails.Plot} ${this.movieDetails.Awards} Information retrieved from Movie DB by Ayan Maity.`,
+      text: `${this.movieDetails.Title}(${this.movieDetails.Year}) ${this.movieDetails.Genre} ${this.movieDetails.Type}. ${this.movieDetails.Ratings[0]?.Value}. Starring ${this.movieDetails.Actors}. Directed by ${this.movieDetails.Director}. Plot: ${this.movieDetails.Plot} ${this.movieDetails.Awards} Information retrieved from Movie DB by Ayan Maity.`,
       url:""
     }).then( (response) => {
       this.snackBar.open("Shared Successfully.",'',{duration:2000});

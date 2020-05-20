@@ -24,14 +24,14 @@
                             <h4><strong>Plot</strong></h4>
                             <p>{{movieDetails.Plot}}</p>
                         </div>
-                        <div class="col-12 text-right" *ngIf="key !== 'episode'">
+                        <div class="col-12 text-right">
                             <div class='share-block' *ngIf="isSharePossible">
                                 <a (click)="share()">
                                     <span class="material-icons icon-position" style="bottom: auto; top: 11px;">share</span>
                                     <span class="icon-text"><strong>SHARE</strong></span>
                                 </a>
                             </div>
-                            <div class="search-list-link">
+                            <div class="search-list-link" *ngIf="key !== 'episode'">
                                 <a href="javascript:void(0);" (click)="setList.emit()">Not what you're looking for ? <strong>See More Results</strong></a>
                             </div>
                         </div>
